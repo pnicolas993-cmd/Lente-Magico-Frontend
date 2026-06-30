@@ -1,0 +1,452 @@
+{
+  "autorizaciones": [
+    {
+      "id": "1",
+      "nombre": "Administrador"
+    },
+    {
+      "id": "2",
+      "nombre": "Caja"
+    },
+    {
+      "id": "3",
+      "nombre": "Bodega"
+    },
+    {
+      "id": "4",
+      "nombre": "Compras"
+    },
+    {
+      "id": "5",
+      "nombre": "Optometra"
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "1",
+      "login": "admin",
+      "correo": "admin@mail.com",
+      "password": "$2b$10$eSQ5dOWF6eTbhwtvvR/iUeQjmzLsPtMQVho/5vPD28rFr21sb9ofy",
+      "activar_usuario": true,
+      "clave_idioma": "es",
+      "clave_activacion": "ACT-ADMIN",
+      "llave_reinicio": null,
+      "hora_reinicio": null
+    },
+    {
+      "login": "Nicolas",
+      "password": "$2b$10$Q20u2xu/YEyYpeC8hxLsGev91CkA9z4xMdLc2gmOmNX4qbokHKCSK",
+      "correo": "Nicolas@gmail.com",
+      "activar_usuario": true,
+      "clave_idioma": "es",
+      "clave_activacion": "ACT-USER",
+      "llave_reinicio": null,
+      "hora_reinicio": null,
+      "id": "2"
+    },
+    {
+      "login": "miguel",
+      "password": "$2b$10$nrrTf/QVSspqeN8LK4n55ujoFTLgJDNcoXJvPVslWczrnejs8AhE6",
+      "correo": "miguel@gmail.com",
+      "activar_usuario": true,
+      "clave_idioma": "es",
+      "clave_activacion": "ACT-USER",
+      "llave_reinicio": null,
+      "hora_reinicio": null,
+      "id": "4"
+    },
+    {
+      "login": "Anacleto",
+      "password": "$2b$10$PxtYxBd5XjUUROzji57.2Oqo6qNB76QCT3FvnoFT1gl9w/..6BpBS",
+      "correo": "Anacleto@gmail.com",
+      "activar_usuario": true,
+      "clave_idioma": "es",
+      "clave_activacion": "ACT-USER",
+      "llave_reinicio": null,
+      "hora_reinicio": null,
+      "id": "5"
+    }
+  ],
+  "autorizacion_usuario": [
+    {
+      "id": "1",
+      "id_autorizacion": "1",
+      "id_sistema_usuario": "1"
+    },
+    {
+      "id": "2",
+      "id_autorizacion": 3,
+      "id_sistema_usuario": "2"
+    },
+    {
+      "id": "4",
+      "id_autorizacion": 4,
+      "id_sistema_usuario": "4"
+    },
+    {
+      "id": "5",
+      "id_autorizacion": 2,
+      "id_sistema_usuario": "5"
+    }
+  ],
+  "tipos_documento": [
+    {
+      "id": "1",
+      "codigo": "CC",
+      "nombre": "Cédula de Ciudadanía"
+    },
+    {
+      "id": "2",
+      "codigo": "TI",
+      "nombre": "Tarjeta de Identidad"
+    },
+    {
+      "id": "3",
+      "codigo": "CE",
+      "nombre": "Cédula de Extranjería"
+    },
+    {
+      "id": "4",
+      "codigo": "PA",
+      "nombre": "Pasaporte"
+    }
+  ],
+  "datos_personales": [
+    {
+      "primer_nombre": "Lorena",
+      "segundo_nombre": "",
+      "primer_apellido": "Romero",
+      "segundo_apellido": "Cassiani",
+      "tipo_documento": "C.C.",
+      "numero_documento": "1070806661",
+      "correo": "lor@gmail.com",
+      "id": 1
+    },
+    {
+      "primer_nombre": "Gumersinda",
+      "segundo_nombre": "",
+      "primer_apellido": "Cassiani",
+      "segundo_apellido": "Bravo",
+      "tipo_documento": "Cédula de Extranjería",
+      "numero_documento": "50971012",
+      "correo": "Gumersinda@gmail.com",
+      "id": 2
+    },
+    {
+      "nombre": "llore",
+      "apellido": "sdcx",
+      "correo": "xsdfgvc@gmail",
+      "id": 3
+    },
+    {
+      "primer_nombre": "Anacleto",
+      "segundo_nombre": "",
+      "primer_apellido": "Parra",
+      "segundo_apellido": "Cassiani",
+      "tipo_documento": "Cédula de Ciudadanía",
+      "numero_documento": "1070806663",
+      "correo": "Anacleto@gmail.com",
+      "id": 4
+    },
+    {
+      "primer_nombre": "karol",
+      "segundo_nombre": "ximena",
+      "primer_apellido": "Sanchez",
+      "segundo_apellido": "Avila",
+      "tipo_documento": "Cédula de Extranjería",
+      "numero_documento": "1070806667",
+      "correo": "karol@gmail.com",
+      "id": 5
+    }
+  ],
+  "categorias_producto": [
+    {
+      "id": "C-001",
+      "nombreCategoria": "Lentes de contacto",
+      "descripcion": "Lentes ópticos blandos y rígidos",
+      "estado": "Inactivo"
+    },
+    {
+      "id": "C-002",
+      "nombreCategoria": "Accesorios",
+      "descripcion": "Líquidos de limpieza y gotas",
+      "estado": "Activo"
+    }
+  ],
+  "productos": [
+    {
+      "id": "2",
+      "codigo_producto": "PR-002",
+      "nombre": "Gotas Lubricantes Renu",
+      "descripcion": "Solución humectante para ojos",
+      "categoria": "C-002",
+      "precio_venta": "345000",
+      "stock_actual": "23",
+      "stock_minimo": "1",
+      "estado": "Disponible"
+    }
+  ],
+  "inventario": [],
+  "proveedores": [
+    {
+      "id": "1",
+      "id_tipo_documento": "1",
+      "nit": "903030304",
+      "razon_social": "Distribuidora Optica SAS",
+      "contacto": "Lorena Romero",
+      "telefono": "3150355552",
+      "correo": "nicolasparraperez11@gmail.com",
+      "estado": "Activo",
+      "tipo": "Distribuidor"
+    },
+    {
+      "id": "2",
+      "id_tipo_documento": "1",
+      "nit": "8009876543",
+      "razon_social": "Lentes del Sur LTDA",
+      "contacto": "María López",
+      "telefono": "3182840220",
+      "correo": "pnicolas993@gmail.com",
+      "estado": "Activo",
+      "tipo": "Mayorista"
+    }
+  ],
+  "compras": [
+    {
+      "id": "C-001",
+      "idProveedor": "2",
+      "fechaCompra": "2026-06-25",
+      "numComprobante": "FAC-0006",
+      "estado": "Pendiente",
+      "detalle": [
+        {
+          "idProducto": "1",
+          "cantidad": 4,
+          "costoUnitario": 250000
+        }
+      ]
+    },
+    {
+      "id": "C-002",
+      "idProveedor": "2",
+      "fechaCompra": "2026-06-27",
+      "numComprobante": "FAC-0008",
+      "estado": "Completada",
+      "detalle": [
+        {
+          "idProducto": "2",
+          "cantidad": 3,
+          "costoUnitario": 148000
+        }
+      ]
+    },
+    {
+      "idProveedor": "Lentes del Sur",
+      "fechaCompra": "2026-06-29",
+      "numComprobante": "FAC-0009",
+      "estado": "Anulada",
+      "detalle": [
+        {
+          "idProducto": "PR-001",
+          "cantidad": 3,
+          "costoUnitario": 15000
+        }
+      ],
+      "id": "C-003"
+    }
+  ],
+  "detalle_compra": [],
+  "reportes_producto": [],
+  "clientes": [
+    {
+      "id": "1",
+      "nombre": "Diana Carolina",
+      "tipo_documento": "Cédula de Ciudadanía",
+      "numero_documento": "56354635",
+      "correo": "hjkghndf@gmail.com"
+    },
+    {
+      "primer_nombre": "Nicolas",
+      "segundo_nombre": "Alexander",
+      "primer_apellido": "Parra",
+      "segundo_apellido": "Perez",
+      "tipo_documento": "Cédula de Ciudadanía",
+      "numero_documento": "1193075853",
+      "correo": "pnicolas@gmail.com",
+      "id": "hBDp9vp"
+    },
+    {
+      "nombre": "lore",
+      "apellido": "romero",
+      "correo": "romero@gmail.com",
+      "id": "4wI-xdx"
+    },
+    {
+      "nombre": "Anacleto",
+      "tipo_documento": "Cédula de Ciudadanía",
+      "numero_documento": "1070806663",
+      "correo": "Anacleto@gmail.com",
+      "id": "sA0EUyJ"
+    },
+    {
+      "nombre": "Nicolas",
+      "apellido": "Alexander",
+      "correo": "pnicolas@gmail.com",
+      "id": "jaHRuia"
+    },
+    {
+      "nombre": "lore",
+      "apellido": "romero",
+      "correo": "romero@gmail.com",
+      "id": "gl6IyAs"
+    },
+    {
+      "nombre": "karol  ximena Sanchez",
+      "tipo_documento": "Cédula de Extranjería",
+      "numero_documento": "1070806667",
+      "correo": "karol@gmail.com",
+      "id": "_oWMtd5"
+    },
+    {
+      "nombre": "sfdjghj",
+      "apellido": "sdfghj",
+      "correo": "fdgh@gmail.com",
+      "id": "q8dw_Im"
+    },
+    {
+      "nombre": "sdfghj",
+      "apellido": "sdfghjk",
+      "correo": "dfgh@gmail.com",
+      "id": "iIIknHm"
+    },
+    {
+      "nombre": "sdfgh",
+      "apellido": "dfgh",
+      "correo": "fgh@gmail.com",
+      "id": "ZJDExi7"
+    }
+  ],
+  "cajeros": [],
+  "optometras": [],
+  "ventas": [
+    {
+      "concepto": "1x Gafas con montura Ray-Ban + Filtro Azul",
+      "total": 350000,
+      "fecha": "24/06/2026",
+      "id": 1
+    }
+  ],
+  "detalle_venta": [],
+  "agenda_consulta": [
+    {
+      "descripcion": "sdfghj",
+      "id": 1
+    }
+  ],
+  "facturas": [],
+  "pagos": [
+    {
+      "numero_factura": "LM-0248",
+      "total": 470000,
+      "recibido": 499997,
+      "cambio": 29997,
+      "id": 1
+    }
+  ],
+  "pacientes": [
+    {
+      "nombre": "dfghj",
+      "tipoDocumento": "CC",
+      "numeroDocumento": "12582154821",
+      "fechaNacimiento": "2026-06-15",
+      "genero": "F",
+      "telefono": "452556665",
+      "correo": "sd@gmail.com",
+      "direccion": "calle 120 #21",
+      "enfermedadesPrevias": "",
+      "usoLentesPrevios": "",
+      "alergias": "",
+      "id": 1
+    }
+  ],
+  "historia_clinica": [
+    {
+      "id_paciente": 1,
+      "fecha_apertura": "2026-06-30",
+      "fechaConsulta": "2026-06-30",
+      "evolucion": "Revisión general",
+      "diagnostico": "Revisión general",
+      "num_consulta": 1,
+      "numeroConsulta": 1,
+      "paciente": {
+        "nombre": "dfghj",
+        "cedula": "12582154821"
+      },
+      "motivo": "dfghj",
+      "antecedentes": "dfgt",
+      "id": 1
+    },
+    {
+      "id_paciente": 1,
+      "fecha_apertura": "2026-06-30",
+      "fechaConsulta": "2026-06-30",
+      "evolucion": "Revisión general",
+      "diagnostico": "Revisión general",
+      "num_consulta": 1,
+      "numeroConsulta": 1,
+      "paciente": {
+        "nombre": "dfghj",
+        "cedula": "12582154821"
+      },
+      "motivo": "dfghj",
+      "antecedentes": "dfgt",
+      "id": 2
+    }
+  ],
+  "consultas": [
+    {
+      "id_paciente": 1,
+      "fecha_apertura": "2026-06-30",
+      "fechaConsulta": "2026-06-30",
+      "evolucion": "Revisión general",
+      "diagnostico": "Revisión general",
+      "num_consulta": 1,
+      "numeroConsulta": 1,
+      "paciente": {
+        "nombre": "dfghj",
+        "cedula": "12582154821"
+      },
+      "motivo": "dfghj",
+      "antecedentes": "dfgt",
+      "id": 1
+    },
+    {
+      "tipo_servicio": "Servicio de Venta Óptica",
+      "nombre_servicio": "dfghjk",
+      "costo_servicio": "100000",
+      "id": 2
+    }
+  ],
+  "formula_optica": [
+    {
+      "id_consulta": "01",
+      "paciente": "zdxfgvhbjk",
+      "documento": "1236",
+      "diagnostico": "Astigmatismo",
+      "esfera_od": "12",
+      "esfera_oi": "2",
+      "cilindro_od": "25",
+      "cilindro_oi": "2",
+      "eje_od": "5",
+      "eje_oi": "2",
+      "recomendaciones": "vgbhnjmk,l.ñ",
+      "observaciones": "dfghjkm",
+      "resultado_examen": "fghjkm",
+      "tipo_lente": "Monofocal",
+      "uso": "Permanente",
+      "fecha_generacion": "2026-06-30",
+      "id": 1
+    }
+  ],
+  "log_errores": []
+}
