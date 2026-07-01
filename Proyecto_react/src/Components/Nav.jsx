@@ -4,11 +4,7 @@ import { Link, useNavigate } from "react-router-dom"; // 1. Importamos useNaviga
 function Nav() {
   const navigate = useNavigate(); // 2. Inicializamos el hook
 
-<<<<<<< HEAD
   // 3. Función centralizada para cerrar sesión
-=======
-  
->>>>>>> origin/Lorena
   const handleLogout = () => {
     localStorage.removeItem("usuario_logueado");
     navigate("/login");
@@ -34,11 +30,7 @@ function Nav() {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
-<<<<<<< HEAD
           <ul className="navbar-nav me-auto">
-=======
-          <ul className="navbar-nav me-auto"/>
->>>>>>> origin/Lorena
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/">
                 Inicio
@@ -63,7 +55,6 @@ function Nav() {
               </ul>
             </li>
 
-<<<<<<< HEAD
             {/* Dropdown Caja */}
             <li className="nav-item dropdown">
               <a
@@ -106,9 +97,6 @@ function Nav() {
               </ul>
             </li>
 
-=======
-          
->>>>>>> origin/Lorena
             {/* Dropdown Optómetra */}
             <li className="nav-item dropdown">
               <a
@@ -128,7 +116,6 @@ function Nav() {
               </ul>
             </li>
 
-<<<<<<< HEAD
             {/* Dropdown Compras */}
             <li className="nav-item dropdown">
               <a
@@ -167,10 +154,6 @@ function Nav() {
               </ul>
             </li>
           </ul>
-=======
-         
-
->>>>>>> origin/Lorena
 
           {/* 4. Botón de Cerrar Sesión con onClick */}
           <button
