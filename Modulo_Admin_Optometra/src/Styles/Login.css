@@ -1,0 +1,15 @@
+ body {
+      background-color: #e8f0fe;
+    }
+ 
+    .caja-login {
+      margin-top: 100px;
+      max-width: 400px;
+     
+
+    }
+ 
+    .titulo-sistema {
+      color: #acc8f1e3;
+      font-weight: bold;
+    }
