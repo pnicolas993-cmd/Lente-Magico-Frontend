@@ -19,6 +19,7 @@ import RegistrarDatosPaciente from "./Pages/Optometra/RegistrarDatosPaciente";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
+<<<<<<< HEAD
 // Modulo Compras
 import ConsultarProveedores from "./Pages/Proveedores.jsx";
 import Categorias from "./Pages/Categorias.jsx";
@@ -49,6 +50,8 @@ import RegistrarDatos from "./Pages/RegistrarDatos.jsx";
 
 // Modulo bodega 
 import ConsultarProducto from "./Pages/ConsultarProducto.jsx";
+=======
+>>>>>>> origin/Lorena
 
 
 
@@ -70,6 +73,7 @@ function AppRoutes() {
           <Route path="/optometra/agregar-consulta" element={<AgregarConsulta />} />
           <Route path="/optometra/generar-formula" element={<GenerarFormula />} />
           <Route path="/optometra/registrar-paciente" element={<RegistrarDatosPaciente />} />
+<<<<<<< HEAD
           <Route path="/compras/proveedores" element={<ConsultarProveedores />} />
           <Route path="/compras/categorias" element={<Categorias />} />
           <Route path="/compras/registro" element={<RegistroCompras />} />
@@ -99,6 +103,9 @@ function AppRoutes() {
           <Route path="/consultar-producto" element={<ConsultarProducto />} />
           <Route path="/caja/RegistrarDatos" element={<RegistrarDatos />} />
 
+=======
+  
+>>>>>>> origin/Lorena
 
         </Routes>
 
