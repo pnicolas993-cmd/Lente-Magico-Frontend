@@ -1,0 +1,37 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "codigo_producto": 1,
+      "nombre": "Montura Aviador Dorada",
+      "descripcion": "Montura metálica dorada estilo aviador",
+      "categoria": "Monturas",
+      "precio_venta": 120000,
+      "stock_actual": 15,
+      "stock_minimo": 5,
+      "estado": "Disponible"
+    },
+    {
+      "id": 2,
+      "codigo_producto": 2,
+      "nombre": "Lentes Antirreflejo Premium",
+      "descripcion": "Lentes con tratamiento antirreflejo",
+      "categoria": "Lentes",
+      "precio_venta": 85000,
+      "stock_actual": 3,
+      "stock_minimo": 5,
+      "estado": "Stock Bajo"
+    },
+    {
+      "codigo_producto": 3,
+      "nombre": "Lentes de Sol Polarizados",
+      "descripcion": "Lentes",
+      "categoria": "Lentes",
+      "precio_venta": 90000,
+      "stock_actual": 20,
+      "stock_minimo": 10,
+      "estado": "Disponible",
+      "id": 3
+    }
+  ]
+}
