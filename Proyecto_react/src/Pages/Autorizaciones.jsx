@@ -14,7 +14,7 @@ function Autorizaciones() {
   const [autorizacionEditando, setAutorizacionEditando] = useState(null);
   const [nombreForm, setNombreForm] = useState("");
 
-  // Cargar las autorizaciones desde json-server cuando se monta la página
+ 
   useEffect(() => {
     cargarAutorizaciones();
   }, []);
@@ -55,7 +55,7 @@ function Autorizaciones() {
     }
 
     if (autorizacionEditando) {
-      // Editar: PUT al recurso existente
+   
       axios
         .put(`${API_URL}/${autorizacionEditando.id}`, {
          
@@ -70,7 +70,7 @@ function Autorizaciones() {
           console.error(err);
         });
     } else {
-      // Agregar: POST de un recurso nuevo
+      
       axios
         .post(API_URL, { nombre: nombreForm })
         .then(() => {
