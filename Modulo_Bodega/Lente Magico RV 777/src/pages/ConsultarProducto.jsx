@@ -23,7 +23,7 @@ function ConsultarProducto() {
   const [nuevoProducto, setNuevoProducto] = useState(productoVacio);
   const [busqueda, setBusqueda] = useState('');
 
-  // ── Cargar productos desde la API al entrar a la página ──
+  
   const cargarProductos = async () => {
     try {
       setCargando(true);
@@ -41,7 +41,6 @@ function ConsultarProducto() {
     cargarProductos();
   }, []);
 
-  // ── Editar ──
   const abrirModal = (producto) => setProductoEditando({ ...producto });
   const cerrarModal = () => setProductoEditando(null);
 
@@ -60,7 +59,7 @@ function ConsultarProducto() {
     }
   };
 
-  // ── Agregar ──
+  
   const abrirAgregar = () => {
     const maxCodigo = productos.length > 0
       ? Math.max(...productos.map(p => Number(p.codigo_producto)))
@@ -94,7 +93,7 @@ function ConsultarProducto() {
     }
   };
 
-  // ── Eliminar ──
+  
   const abrirEliminar = (producto) => setProductoEliminando({ ...producto });
   const cerrarEliminar = () => setProductoEliminando(null);
 
@@ -109,7 +108,7 @@ function ConsultarProducto() {
     }
   };
 
-  // ── Filtro ──
+  
   const productosFiltrados = productos.filter(p =>
     p.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
     String(p.codigo_producto).includes(busqueda)
@@ -181,7 +180,7 @@ function ConsultarProducto() {
           </tbody>
         </table>
 
-        {/* Modal Editar */}
+        
         {productoEditando && (
           <div className="modal-overlay">
             <div className="modal-editar">
@@ -254,7 +253,7 @@ function ConsultarProducto() {
           </div>
         )}
 
-        {/* Modal Agregar */}
+        
         {mostrarAgregar && (
           <div className="modal-overlay">
             <div className="modal-editar">
@@ -333,7 +332,7 @@ function ConsultarProducto() {
           </div>
         )}
 
-        {/* Modal Eliminar */}
+        
         {productoEliminando && (
           <div className="modal-overlay">
             <div className="modal-editar" style={{ maxWidth: '420px' }}>
