@@ -3,16 +3,16 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../Styles/HistoriaClinica.css";
 
-// Definimos los endpoints según tus capturas de db.json
+
 const PACIENTES_URL = "http://localhost:3000/pacientes";
 const CONSULTAS_URL = "http://localhost:3000/consultas";
-// Antes apuntaba a /consultas
+
 const URL_API = "http://localhost:3000/historia_clinica";
 
 function HistoriaClinica() {
   const navigate = useNavigate();
   
-  // Estados para el manejo de datos de la API
+  
   const [listaPacientes, setListaPacientes] = useState([]);
   const [idPacienteSeleccionado, setIdPacienteSeleccionado] = useState("");
   const [datosPaciente, setDatosPaciente] = useState(null);
@@ -20,7 +20,7 @@ function HistoriaClinica() {
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState("");
 
-  // 1. Cargar todos los pacientes registrados al iniciar el componente
+  
   useEffect(() => {
     axios
       .get(PACIENTES_URL)
@@ -40,22 +40,22 @@ function HistoriaClinica() {
       });
   }, []);
 
-  // 2. Cada vez que cambie el paciente seleccionado, traer sus datos y sus consultas correspondientes
+
   useEffect(() => {
     if (!idPacienteSeleccionado) return;
 
-    // Buscamos el detalle del paciente específico
+    
     axios
       .get(`${PACIENTES_URL}/${idPacienteSeleccionado}`)
       .then((resPaciente) => {
         const paciente = resPaciente.data;
         setDatosPaciente(paciente);
 
-        // Obtenemos todas las consultas globales para filtrar las de este paciente por su documento o ID
+       
         return axios.get(URL_API).then((resConsultas) => {
           const todasLasConsultas = resConsultas.data;
           
-          // Filtramos comparando el ID del paciente o el documento de identidad
+         
           const filtradas = todasLasConsultas.filter(
             (c) => 
               (c.id_paciente && String(c.id_paciente) === String(paciente.id)) ||
@@ -84,7 +84,7 @@ function HistoriaClinica() {
         Consulte los antecedentes y el historial de consultas registradas.
       </p>
 
-      {/* Buscador / Selector */}
+     
       <div className="card shadow-sm mb-3">
         <div className="card-body">
           <div className="row g-2">
@@ -114,7 +114,7 @@ function HistoriaClinica() {
         </div>
       </div>
 
-      {/* Ficha técnica y consultas mapeadas dinámicamente */}
+     
       {datosPaciente && (
         <div className="card shadow-sm">
           <div className="card-body p-4">
@@ -165,7 +165,7 @@ function HistoriaClinica() {
               <h6 className="fw-bold">Historial de Consultas</h6>
             </div>
 
-            {/* Mapeo dinámico filtrado de consultas */}
+            
             {consultasPaciente.length > 0 ? (
               consultasPaciente.map((consulta, index) => (
                 <div className="border-start border-primary border-3 ps-3 mb-4 py-1" key={consulta.id || index}>
