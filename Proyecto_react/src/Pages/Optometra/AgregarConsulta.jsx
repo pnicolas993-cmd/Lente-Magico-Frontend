@@ -8,22 +8,22 @@ const URL_API_CONSULTAS = "http://localhost:3000/consultas";
 function AgregarConsulta() {
   const navigate = useNavigate();
 
-  // Estados para el Paciente
+  
   const [pacientes, setPacientes] = useState([]); 
   const [idPacienteSeleccionado, setIdPacienteSeleccionado] = useState("");
 
-  // Estados de control de la consulta
-  const [numeroConsulta, setNumeroConsulta] = useState("01"); // Inicializado como en la imagen
-  const [fechaConsulta, setFechaConsulta] = useState("2026-06-30"); // Inicializado como en la imagen
-  const [motivo, setMotivo] = useState("dfghj"); // Inicializado como en la imagen
-  const [antecedentes, setAntecedentes] = useState("dfgt"); // Inicializado como en la imagen
+ 
+  const [numeroConsulta, setNumeroConsulta] = useState("01"); 
+  const [fechaConsulta, setFechaConsulta] = useState("2026-06-30"); 
+  const [motivo, setMotivo] = useState("dfghj"); 
+  const [antecedentes, setAntecedentes] = useState("dfgt"); 
   const [diagnostico, setDiagnostico] = useState("");
 
-  // Estado para alertas de feedback (Inicializado con el error de la imagen para pruebas)
+  
   const [error, setError] = useState("Por favor completa todos los campos obligatorios (*)");
   const [exito, setExito] = useState("");
 
-  // Cargar la lista de pacientes registrados
+  
   useEffect(() => {
     axios.get(URL_API_PACIENTES)
       .then((respuesta) => {
@@ -51,7 +51,7 @@ function AgregarConsulta() {
 
     const pacienteSeleccionado = pacientes.find(p => String(p.id) === String(idPacienteSeleccionado));
 
-    // OBJETO CORREGIDO: Se cerraron correctamente las llaves rotas que tenías
+    
     const nuevaConsulta = {
       id_paciente: parseInt(idPacienteSeleccionado),
       fecha_apertura: fechaConsulta,                
@@ -81,7 +81,7 @@ function AgregarConsulta() {
 
   return (
     <div className="container my-3" style={{ maxWidth: "1000px" }}>
-      {/* 1. Alerta de error arriba del todo igual que la imagen */}
+    
       {error && (
         <div className="alert alert-danger border-0 p-3 rounded-0" style={{ backgroundColor: "#FADBD8", color: "#78281F" }}>
           {error}
@@ -94,19 +94,19 @@ function AgregarConsulta() {
         {/* Sección Optómetra */}
         <div className="mb-4">
           <label className="form-label text-secondary small d-block mb-2">Optómetra</label>
-          {/* Badge o contenedor gris estático para "Sesión actual" */}
+         
           <span className="d-inline-block px-3 py-2 rounded bg-light text-dark text-muted small" style={{ minWidth: "150px", border: "1px solid #E5E7E9" }}>
             Sesión actual
           </span>
         </div>
 
-        {/* 2. Título de Sección Azul sin bordes grises */}
+        
         <div className="mb-3 mt-4">
           <h6 className="text-primary fw-bold">Seleccionar Paciente</h6>
           <hr className="text-muted opacity-25 my-2" />
         </div>
 
-        {/* 3. Fila de Paciente, Número y Fecha en una sola línea */}
+     
         <div className="row g-3 align-items-end mb-4">
           <div className="col-md-6">
             <label className="form-label text-secondary small">Paciente Registrado</label>
@@ -122,7 +122,7 @@ function AgregarConsulta() {
                   {p.nombre || "dfghj"} - Cédula: {p.numeroDocumento || "12582154821"}
                 </option>
               ))}
-              {/* Opción quemada de respaldo por si tu backend está vacío y quieres ver el diseño idéntico */}
+             
               {pacientes.length === 0 && <option value="mock">dfghj - Cédula: 12582154821</option>}
             </select>
           </div>
@@ -150,13 +150,13 @@ function AgregarConsulta() {
           </div>
         </div>
 
-        {/* 4. Segunda Sección Azul */}
+       
         <div className="mb-3 mt-4">
           <h6 className="text-primary fw-bold">Motivo y Antecedentes</h6>
           <hr className="text-muted opacity-25 my-2" />
         </div>
 
-        {/* Textareas */}
+      
         <div className="mb-4">
           <label className="form-label text-secondary small">32 - Motivo de la consulta</label>
           <textarea
@@ -179,7 +179,7 @@ function AgregarConsulta() {
           />
         </div>
 
-        {/* Botones de acción inferiores */}
+        
         <div className="d-flex justify-content-center gap-2 mt-4">
           <button type="submit" className="btn btn-success px-4">
             Guardar Consulta
