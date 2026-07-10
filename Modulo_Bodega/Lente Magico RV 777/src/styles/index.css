@@ -59,7 +59,6 @@ body {
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
-  /* Se eliminó border-inline para quitar las líneas de los lados */
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -110,13 +109,8 @@ code {
   background: var(--code-bg);
 }
 
-/* =========================================
-   ESTILOS PARA EL NAV (BARRA SUPERIOR)
-   ========================================= */
-
-/* Contenedor principal del NAV en Azul */
 .nav-optica {
-    background-color: #1e40af; /* Un azul corporativo fuerte y profesional */
+    background-color: #1e40af; 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -124,7 +118,6 @@ code {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* El texto de "Lente Mágico" en Blanco */
 .nav-logo-optica {
     color: #ffffff !important;
     font-size: 1.5rem;
@@ -132,7 +125,6 @@ code {
     text-decoration: none;
 }
 
-/* Contenedor de las opciones (inicio, Bodega, etc.) */
 .nav-lista-optica {
     display: flex;
     gap: 24px;
@@ -141,7 +133,6 @@ code {
     padding: 0;
 }
 
-/* Los enlaces de las opciones en Blanco */
 .nav-enlace-optica {
     color: #ffffff;
     text-decoration: none;
@@ -151,7 +142,6 @@ code {
     transition: opacity 0.2s, transform 0.2s;
 }
 
-/* Efecto al pasar el mouse por encima de las opciones */
 .nav-enlace-optica:hover {
     opacity: 1;
     text-decoration: underline;
@@ -161,26 +151,23 @@ code {
     background-color: #1e40af !important; 
 }
 
-/* Bordes para las tarjetas de la bodega */
 .borde-total {
-    border-left: 6px solid #1e40af !important; /* Azul principal de tu óptica */
+    border-left: 6px solid #1e40af !important; 
 }
 
 .borde-consultados {
-    border-left: 6px solid #0d9488 !important; /* Verde/Teal */
+    border-left: 6px solid #0d9488 !important; 
 }
 
 .borde-editados {
-    border-left: 6px solid #f59e0b !important; /* Amarillo/Naranja */
+    border-left: 6px solid #f59e0b !important; 
 }
 
 .borde-eliminados {
-    border-left: 6px solid #dc2626 !important; /* Rojo */
+    border-left: 6px solid #dc2626 !important; 
 }
 
-/* =========================================
-   MÓDULO: CONSULTAR PRODUCTO
-   ========================================= */
+
 
 .consulta-container {
   max-width: 1000px;
@@ -204,7 +191,6 @@ code {
   margin-bottom: 24px;
 }
 
-/* Barra de búsqueda y controles */
 .busqueda-wrapper {
   display: flex;
   gap: 16px;
@@ -258,7 +244,6 @@ code {
   cursor: pointer;
 }
 
-/* Diseño de la Tabla */
 .tabla-responsiva {
   width: 100%;
   overflow-x: auto;
@@ -294,7 +279,6 @@ code {
   font-weight: 600;
 }
 
-/* Estado (Disponibilidad) */
 .badge {
   padding: 4px 10px;
   border-radius: 20px;
@@ -313,7 +297,6 @@ code {
   color: #92400e;
 }
 
-/* Botones dentro de la tabla */
 .btn-tabla {
   padding: 6px 14px;
   border-radius: 6px;
