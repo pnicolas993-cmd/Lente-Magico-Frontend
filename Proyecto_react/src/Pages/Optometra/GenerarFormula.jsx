@@ -223,7 +223,7 @@ function GenerarFormula() {
         </div>
       </div>
 
-      {/* ── Vista previa ── */}
+     
       <div className="card vista-formula mt-4 p-4 border-start border-3 border-info shadow-sm">
         <h5 className="text-info fw-bold mb-3">Vista previa de la fórmula</h5>
         <div className="row g-2">
