@@ -25,7 +25,7 @@ function AgregarConsulta() {
 
   
   useEffect(() => {
-    axios.get(URL_API_PACIENTES)
+    axios.get(URL_API_CONSULTAS)
       .then((respuesta) => {
         setPacientes(respuesta.data);
         if (respuesta.data.length > 0) {
