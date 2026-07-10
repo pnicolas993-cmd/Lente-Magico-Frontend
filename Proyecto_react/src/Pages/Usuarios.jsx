@@ -69,7 +69,7 @@ function Usuarios() {
     const asignacion = asignaciones.find((a) => String(a.id_sistema_usuario) === String(usuario.id));
     setUsuarioEditando(usuario);
     setNombreUsuarioForm(usuario.login); 
-    setContrasenaForm(""); // Vacío por seguridad. Si no escribe nada, no se cambia.
+    setContrasenaForm(""); 
     setCorreoForm(usuario.correo);
     setEstadoForm(usuario.activar_usuario); 
     setIdAutorizacionForm(asignacion ? String(asignacion.id_autorizacion) : String(autorizaciones[0]?.id || ""));
@@ -85,7 +85,7 @@ function Usuarios() {
 
     const datosUsuario = {
       login: nombreUsuarioForm,
-      // Si se escribe en el input se manda plano al backend, si no se mantiene la contraseña previa
+      
       password: contrasenaForm.trim() !== "" 
         ? contrasenaForm 
         : (usuarioEditando ? (usuarioEditando.password || usuarioEditando.contraseña) : ""),
@@ -258,7 +258,7 @@ function Usuarios() {
                 </div>
                 <div className="col-md-6 mb-3">
                   <label className="form-label">
-                    Contraseña {usuarioEditando && <span className="text-muted" style={{fontSize: "0.75rem"}}>(dejar vacío para no cambiar)</span>}
+                    Contraseña {usuarioEditando && <span className="text-muted" style={{fontSize: "0.75rem"}}></span>}
                   </label>
                   <input
                     type="password"
