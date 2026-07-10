@@ -14,7 +14,7 @@ function GenerarFormula() {
   const [uso, setUso] = useState("");
   const [fechaGeneracion, setFechaGeneracion] = useState("");
 
-  // Estados de graduación
+  
   const [esferaOD, setEsferaOD] = useState("");
   const [esferaOI, setEsferaOI] = useState("");
   const [cilindroOD, setCilindroOD] = useState("");
@@ -22,7 +22,7 @@ function GenerarFormula() {
   const [ejeOD, setEjeOD] = useState("");
   const [ejeOI, setEjeOI] = useState("");
 
-  // Estado para el examen (agregado para corregir error de referencia)
+  
   const [resultadoExamen, setResultadoExamen] = useState("");
 
   const [error, setError] = useState("");
@@ -54,7 +54,7 @@ function GenerarFormula() {
       eje_oi: ejeOI,
       recomendaciones,
       observaciones,
-      resultado_examen: resultadoExamen, // Guardado en el servidor
+      resultado_examen: resultadoExamen, 
       tipo_lente: tipoLente,
       uso,
       fecha_generacion: fechaGeneracion,
@@ -88,7 +88,7 @@ function GenerarFormula() {
 
           <form onSubmit={manejarGenerar}>
 
-            {/* ── Consulta de referencia ── */}
+           
             <div className="seccion-form mt-3">
               <h6>Consulta de referencia</h6>
             </div>
@@ -120,7 +120,7 @@ function GenerarFormula() {
               </div>
             </div>
 
-            {/* ── Graduación ── */}
+           
             <div className="seccion-form mt-4">
               <h6>Datos de la Fórmula (Graduación)</h6>
             </div>
@@ -157,7 +157,7 @@ function GenerarFormula() {
               </div>
             </div>
 
-            {/* ── Tipo lente, uso y fecha ── */}
+           
             <div className="seccion-form mt-4">
               <h6>Datos del Lente</h6>
             </div>
@@ -189,7 +189,7 @@ function GenerarFormula() {
               </div>
             </div>
 
-            {/* ── Recomendaciones y observaciones ── */}
+            
             <div className="seccion-form mt-4">
               <h6>Recomendaciones</h6>
             </div>
