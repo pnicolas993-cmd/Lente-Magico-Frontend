@@ -16,7 +16,7 @@ function Index() {
                 </p>
 
                 <div className="row g-3 mb-4">
-                    {/* Tarjeta 1: Cantidad Total de Productos */}
+                    
                     <div className="col-md-3">
                         <div className="card tarjeta-resumen borde-total p-3">
                             <p className="text-muted mb-1" style={{ fontSize: '13px' }}>cantidad Productos</p>
@@ -24,7 +24,6 @@ function Index() {
                         </div>
                     </div>
 
-                    {/* Tarjeta 2: Productos Consultados */}
                     <div className="col-md-3">
                         <div className="card tarjeta-resumen verde borde-consultados p-3">
                             <p className="text-muted mb-1" style={{ fontSize: '13px' }}>Productos Consultados</p>
@@ -32,7 +31,6 @@ function Index() {
                         </div>
                     </div>
 
-                    {/* Tarjeta 3: Productos Editados */}
                     <div className="col-md-3">
                         <div className="card tarjeta-resumen naranja borde-editados p-3">
                             <p className="text-muted mb-1" style={{ fontSize: '13px' }}>Productos Editados</p>
@@ -40,7 +38,6 @@ function Index() {
                         </div>
                     </div>
 
-                    {/* Tarjeta 4: Productos Eliminados */}
                     <div className="col-md-3">
                         <div className="card tarjeta-resumen morado borde-eliminados p-3">
                             <p className="text-muted mb-1" style={{ fontSize: '13px' }}>Productos Eliminados</p>
