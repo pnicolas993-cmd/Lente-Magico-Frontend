@@ -7,15 +7,14 @@ import "../Styles/Login.css";
 function Login() {
   const [correo, setCorreo] = useState("");
   const [contrasena, setContrasena] = useState("");
-  const [errorMsg, setErrorMsg] = useState(""); // Estado para mostrar alertas si fallan las credenciales
+  const [errorMsg, setErrorMsg] = useState(""); 
   const navigate = useNavigate();
 
   const manejarIngresar = (e) => {
     e.preventDefault();
-    setErrorMsg(""); // Limpiar errores previos
+    setErrorMsg(""); 
 
-    // 2. Consultamos el endpoint real de autenticación del backend
-    // Este endpoint valida con bcrypt y genera el token de sesión
+   
     axios
       .post("http://localhost:3000/api/auth/login", {
         correo: correo,
@@ -24,8 +23,7 @@ function Login() {
       .then((respuesta) => {
         const { usuario, token, rol } = respuesta.data;
 
-        // 3. CUMPLIMIENTO DE RÚBRICA: Guardar datos de sesión simulada en LocalStorage
-        // Incluye el token simulado y el rol entregados por el backend
+        
         localStorage.setItem(
           "usuario_logueado",
           JSON.stringify({
@@ -38,13 +36,12 @@ function Login() {
         );
 
         alert(`¡Bienvenido al sistema, ${usuario.login}!`);
-        navigate("/"); // Redirección al Dashboard de administración
+        navigate("/"); 
       })
       .catch((error) => {
         console.error("Error en el login:", error);
 
-        // 4. Mostramos el mensaje real que envía el backend (correo/contraseña
-        // incorrectos, usuario inactivo, etc.) en vez de un error genérico
+      
         if (error.response) {
           setErrorMsg(error.response.data.mensaje || "Correo electrónico o contraseña incorrectos.");
         } else {
@@ -67,7 +64,7 @@ function Login() {
           <div className="card-body p-4">
             <h5 className="card-title mb-3 fw-bold">Iniciar Sesión</h5>
             
-            {/* Mensaje de error dinámico por si falla la autenticación */}
+            
             {errorMsg && (
               <div className="alert alert-danger py-2 small" role="alert">
                 {errorMsg}
