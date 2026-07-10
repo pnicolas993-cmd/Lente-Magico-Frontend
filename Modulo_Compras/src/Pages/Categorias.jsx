@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import "../Styles/Style.css";
 import Navbar from '../Components/Navbar.jsx';
-import { categoriasService } from '../api/categoriasService.js'; // Importamos el servicio
+import { categoriasService } from '../api/categoriasService.js'; 
 
 const formVacio = {
     id: '',
@@ -14,7 +14,7 @@ const formVacio = {
 function Categorias() {
     const navigate = useNavigate();
     const [busqueda, setBusqueda] = useState('');
-    const [categorias, setCategorias] = useState([]); // Iniciamos el arreglo vacío
+    const [categorias, setCategorias] = useState([]); 
     const [categoriaEditando, setCategoriaEditando] = useState(null);
     const [mostrarAgregar, setMostrarAgregar] = useState(false);
     const [formData, setFormData] = useState(formVacio);
@@ -22,7 +22,7 @@ function Categorias() {
     const [mostrarConfirmar, setMostrarConfirmar] = useState(false);
     const [categoriaAEliminar, setCategoriaAEliminar] = useState(null);
 
-    // Cargar los datos desde la API al montar el componente
+    
     useEffect(() => {
         const cargarCategorias = async () => {
             try {
@@ -49,7 +49,6 @@ function Categorias() {
 
     const handleEditar = (c) => {
         setMostrarAgregar(false);
-        // Soportamos id o id_categoria dependiendo de cómo lo devuelva tu API
         setCategoriaEditando(c.id || c.id_categoria);
         setFormData({ ...c });
     };
@@ -59,7 +58,7 @@ function Categorias() {
             const idTarget = formData.id || formData.id_categoria;
             const modificado = await categoriasService.actualizarCategoria(idTarget, formData);
 
-            // Actualizamos el estado local mapeando bajo ambos formatos
+            
             setCategorias(categorias.map((c) =>
                 (c.id || c.id_categoria) === idTarget ? modificado : c
             ));
@@ -73,8 +72,6 @@ function Categorias() {
 
     const handleAgregarNueva = async () => {
         try {
-            // El ID comúnmente lo autoincrementa la API o base de datos, 
-            // pero si necesitas enviarlo formateado lo calculamos aquí:
             const ultimoIdNum = categorias.length > 0
                 ? Math.max(...categorias.map(c => parseInt(String(c.id || c.id_categoria).replace('C-', '')) || 0))
                 : 0;
@@ -101,7 +98,6 @@ function Categorias() {
             const idTarget = categoriaAEliminar.id || categoriaAEliminar.id_categoria;
             await categoriasService.eliminarCategoria(idTarget);
 
-            // Remover del estado local
             setCategorias(categorias.filter((c) => (c.id || c.id_categoria) !== idTarget));
             setMostrarConfirmar(false);
             setCategoriaAEliminar(null);
@@ -167,7 +163,7 @@ function Categorias() {
 
             <div className="container py-4">
 
-                {/* Encabezado con stats */}
+                {/* Encabezado*/}
                 <div className="row g-3 mb-4 align-items-center">
                     <div className="col-md-5">
                         <h4 className="fw-bold mb-0">Categorías</h4>
