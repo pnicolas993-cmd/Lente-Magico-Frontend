@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../../Styles/RegistrarDatosPaciente.css";
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/pacientes"; // Cambia esto a la URL de tu API
+const API_URL = "http://localhost:3000/pacientes"; 
 
 function RegistrarDatosPaciente() {
   const [nombre, setNombre] = useState("");
