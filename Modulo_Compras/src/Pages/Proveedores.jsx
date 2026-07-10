@@ -79,7 +79,7 @@ function ConsultarProveedores() {
     };
     const confirmarEliminar = async () => {
         try {
-            // Extrae el ID real (ya sea id_proveedor o id)
+            
             const idTarget = proveedorAEliminar.id_proveedor || proveedorAEliminar.id;
 
             if (!idTarget) {
@@ -87,10 +87,8 @@ function ConsultarProveedores() {
                 return;
             }
 
-            // Enviamos el ID correcto a la API
             await proveedoresService.eliminarProveedor(String(idTarget));
 
-            // Filtramos el estado local comparando ambos campos para asegurar que desaparezca de la vista
             setProveedores(proveedores.filter((p) =>
                 String(p.id_proveedor || p.id) !== String(idTarget)
             ));
