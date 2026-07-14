@@ -30,7 +30,7 @@ function TarjetaDebito() {
       const mensajeServidor = error.response?.data?.mensaje || error.message;
 
       alert(
-        `❌ Error al registrar el pago en la API (Código: ${codigoStatus})\n\n` +
+        `❌ Error al registrar el pago (Código: ${codigoStatus})\n\n` +
         `Detalle técnico: ${mensajeServidor}\n\n` +
         `Asegúrate de que tu backend esté corriendo en el puerto 3000.`
       );
@@ -55,7 +55,6 @@ function TarjetaDebito() {
 
           <form onSubmit={procesarPago}>
             <div className="mb-4">
-              {/* CORREGIDO: Se añade name="numeroOperacion" para capturar el valor */}
               <input 
                 type="text" 
                 name="numeroOperacion"
