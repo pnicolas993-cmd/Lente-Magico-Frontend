@@ -85,7 +85,7 @@ function AgregarProductos() {
             </div>
 
             <button type="submit" className="btn btn-primary w-100 fw-bold py-2 mb-3 shadow-sm">
-              Agregar
+              Agregar Producto
             </button>
           </form>
         </div>
