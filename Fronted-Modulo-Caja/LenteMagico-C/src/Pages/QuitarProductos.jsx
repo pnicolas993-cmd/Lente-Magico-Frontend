@@ -39,7 +39,7 @@ function QuitarProductos() {
       const mensajeApi = error.response?.data?.mensaje || error.message;
 
       alert(
-        `❌ El producto no se pudo registrar en la API (Status: ${statusError}).\n` +
+        `❌ El producto no se pudo registrar (Status: ${statusError}).\n` +
         `Detalle: ${mensajeApi}\n\n` +
         `Se ha restaurado el producto en la lista.`
       );
