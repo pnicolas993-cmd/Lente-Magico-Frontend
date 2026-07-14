@@ -75,7 +75,7 @@ function Efectivo() {
             <div className="text-muted font-monospace">{factura.documento}</div>
           </div>
 
-          {/* Cuerpo / Ítems de la Factura */}
+          {/* Cuerpo de la Factura */}
           <div className="border-top border-bottom py-2 my-3">
             <div className="text-secondary fw-bold text-uppercase mb-2" style={{ fontSize: "11px" }}>Detalle de Productos:</div>
             {factura.productos.map((prod, index) => (
