@@ -32,7 +32,7 @@ function RegistrarPedido() {
       const mensajeServidor = error.response?.data?.mensaje || error.message;
 
       alert(
-        `❌ Error al registrar el pedido en la API (Código: ${codigoStatus})\n\n` +
+        `❌ Error al registrar el pedido (Código: ${codigoStatus})\n\n` +
         `Detalle técnico: ${mensajeServidor}\n\n` +
         `Asegúrate de que tu backend esté corriendo en el puerto 3000.`
       );
