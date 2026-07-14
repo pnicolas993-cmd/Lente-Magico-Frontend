@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 function Inicio() {
   return (
-    // 1. Cambiamos las clases "bg-dark text-white" por estilos personalizados con el azul de tu Navbar
     <div 
       className="p-5 text-center rounded-3 shadow-sm mx-auto" 
       style={{ 
