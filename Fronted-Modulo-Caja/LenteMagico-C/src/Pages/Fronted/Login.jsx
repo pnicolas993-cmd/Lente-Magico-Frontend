@@ -3,8 +3,6 @@ import React from "react";
 export default function Login({ onLogin }) {
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes capturar e.target.correo.value si deseas validar datos
-    
     // Activa el estado de autenticación en App.jsx
     onLogin(); 
   };
