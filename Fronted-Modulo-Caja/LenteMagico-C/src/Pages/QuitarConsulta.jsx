@@ -32,7 +32,7 @@ function QuitarConsulta() {
       const detalleError = error.response?.data?.mensaje || error.message || "Error de conexión con el servidor";
       
       alert(
-        `❌ Error: No se pudo guardar la eliminación en la API.\n` +
+        `❌ Error: No se pudo guardar la eliminacion.\n` +
         `Detalle técnico: ${detalleError}\n\n` 
       );
     }
