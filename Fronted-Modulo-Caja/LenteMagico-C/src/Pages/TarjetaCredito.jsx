@@ -32,7 +32,7 @@ function TarjetaCredito() {
       const mensajeApi = error.response?.data?.mensaje || error.message;
 
       alert(
-        `❌ No se guardó en la API (Código: ${codigoStatus})\n\n` +
+        `❌ No se guardó (Código: ${codigoStatus})\n\n` +
         `Detalle técnico: ${mensajeApi}\n\n` +
         `Revisa si agregaste la ruta app.use('/pagos-tarjeta') en tu index.js de Node.`
       );
