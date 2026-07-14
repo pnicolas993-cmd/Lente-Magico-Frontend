@@ -35,7 +35,7 @@ function Plataformas() {
     } catch (error) {
       console.error("Error al guardar en la tabla pagos:", error);
       const detalleError = error.response?.data?.mensaje || error.message || "Error de red";
-      alert(`❌ Error al guardar en la API: ${detalleError}`);
+      alert(`❌ Error al guardar: ${detalleError}`);
     }
   };
 
