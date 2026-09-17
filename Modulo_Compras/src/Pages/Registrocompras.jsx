@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react'; // 1. Agrega useEffect
+import { useState, useEffect } from 'react'; 
 import "../Styles/Style.css";
 import Navbar from '../Components/Navbar.jsx';
-import { comprasService } from '../api/comprasService'; // 2. Importa el servicio
+import { comprasService } from '../api/comprasService'; 
 
-// Eliminamos "comprasIniciales" estáticas porque ahora vendrán de la API
+
 const proveedoresLista = [
     'Óptica Visión S.A.',
     'Lentes del Sur',
@@ -30,12 +30,11 @@ const formVacio = {
 function RegistroCompras() {
     const navigate = useNavigate();
     const [busqueda, setBusqueda] = useState('');
-    const [compras, setCompras] = useState([]); // 3. Inicializa como array vacío
+    const [compras, setCompras] = useState([]); 
     const [mostrarAgregar, setMostrarAgregar] = useState(false);
     const [formNuevo, setFormNuevo] = useState(formVacio);
-    const [facturaVista, setFacturaVista] = useState(null);
-
-    // 4. Cargar las compras desde el servidor al montar el componente
+    const [facturaVista, setFacturaVista] = useState(null)
+    
     useEffect(() => {
         cargarCompras();
     }, []);
@@ -83,16 +82,15 @@ function RegistroCompras() {
     const handleEliminarLineaNuevo = (index) =>
         setFormNuevo({ ...formNuevo, detalle: formNuevo.detalle.filter((_, i) => i !== index) });
 
-    // 5. Ajustamos para guardar en la API mediante POST
+    
     const handleAgregar = async () => {
         try {
-            // Nota: JSON-Server autogenerará un ID único numérico o string, 
-            // pero si deseas conservar tu patrón "C-00X", mapeamos los datos antes de enviar:
+           
             const nuevoId = `C-00${compras.length + 1}`;
             const objetoAEnviar = {
                 ...formNuevo,
                 id: nuevoId,
-                // Validamos que los números se guarden como enteros/flotantes en la BD
+                
                 detalle: formNuevo.detalle.map(d => ({
                     idProducto: d.idProducto,
                     cantidad: Number(d.cantidad),
@@ -102,7 +100,6 @@ function RegistroCompras() {
 
             await comprasService.crearCompra(objetoAEnviar);
 
-            // Recargamos el estado local consultando la API fresca
             cargarCompras();
 
             setFormNuevo(formVacio);
@@ -122,7 +119,7 @@ function RegistroCompras() {
         <>
             <Navbar />
 
-            {/* Modal Ver Factura */}
+            {/* Ver Factura */}
             {facturaVista && (
                 <div className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
                     style={{ backgroundColor: 'rgba(0,0,0,0.6)', zIndex: 9999 }}>
