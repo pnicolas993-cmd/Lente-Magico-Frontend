@@ -2,6 +2,7 @@ import Login from "./pages/login";
 import Index from "./pages/Index";
 import ConsultarProducto from "./pages/ConsultarProducto";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Nav from "./components/Nav";
 
 function App() {
     return (
