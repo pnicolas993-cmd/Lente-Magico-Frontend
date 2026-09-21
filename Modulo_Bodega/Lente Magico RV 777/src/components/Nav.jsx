@@ -44,7 +44,6 @@ function Nav() {
                 </div>
             </nav>
 
-            {/* Modal cerrar sesión */}
             {mostrarAlerta && (
                 <div className="modal-overlay">
                     <div className="modal-editar" style={{ maxWidth: '400px' }}>
