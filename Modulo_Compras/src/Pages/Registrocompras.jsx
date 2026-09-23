@@ -3,6 +3,10 @@ import { useState, useEffect } from 'react';
 import "../Styles/Style.css";
 import Navbar from '../Components/Navbar.jsx';
 import { comprasService } from '../api/comprasService'; 
+<<<<<<< HEAD
+=======
+
+>>>>>>> Nicolas
 
 const proveedoresLista = [
     'Óptica Visión S.A.',
@@ -32,8 +36,13 @@ function RegistroCompras() {
     const [compras, setCompras] = useState([]); 
     const [mostrarAgregar, setMostrarAgregar] = useState(false);
     const [formNuevo, setFormNuevo] = useState(formVacio);
+<<<<<<< HEAD
     const [facturaVista, setFacturaVista] = useState(null);
 
+=======
+    const [facturaVista, setFacturaVista] = useState(null)
+    
+>>>>>>> Nicolas
     useEffect(() => {
         cargarCompras();
     }, []);
@@ -84,10 +93,18 @@ function RegistroCompras() {
     
     const handleAgregar = async () => {
         try {
+<<<<<<< HEAD
+=======
+           
+>>>>>>> Nicolas
             const nuevoId = `C-00${compras.length + 1}`;
             const objetoAEnviar = {
                 ...formNuevo,
                 id: nuevoId,
+<<<<<<< HEAD
+=======
+                
+>>>>>>> Nicolas
                 detalle: formNuevo.detalle.map(d => ({
                     idProducto: d.idProducto,
                     cantidad: Number(d.cantidad),
@@ -96,7 +113,11 @@ function RegistroCompras() {
             };
 
             await comprasService.crearCompra(objetoAEnviar);
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> Nicolas
             cargarCompras();
 
             setFormNuevo(formVacio);
@@ -116,7 +137,11 @@ function RegistroCompras() {
         <>
             <Navbar />
 
+<<<<<<< HEAD
             {/*  Ver Factura */}
+=======
+            {/* Ver Factura */}
+>>>>>>> Nicolas
             {facturaVista && (
                 <div className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
                     style={{ backgroundColor: 'rgba(0,0,0,0.6)', zIndex: 9999 }}>

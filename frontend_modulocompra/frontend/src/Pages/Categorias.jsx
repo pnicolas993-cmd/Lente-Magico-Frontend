@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import "../Styles/Style.css";
 import Navbar from '../Components/Navbar.jsx';
-import { categoriasService } from '../api/categoriasService.js'; 
+const API_URL = "http://localhost:5000/api/categorias";
 
 const formVacio = {
     id: '',
@@ -14,7 +14,7 @@ const formVacio = {
 function Categorias() {
     const navigate = useNavigate();
     const [busqueda, setBusqueda] = useState('');
-    const [categorias, setCategorias] = useState([]); 
+    const [categorias, setCategorias] = useState([]); // Iniciamos el arreglo vacío
     const [categoriaEditando, setCategoriaEditando] = useState(null);
     const [mostrarAgregar, setMostrarAgregar] = useState(false);
     const [formData, setFormData] = useState(formVacio);
@@ -22,15 +22,19 @@ function Categorias() {
     const [mostrarConfirmar, setMostrarConfirmar] = useState(false);
     const [categoriaAEliminar, setCategoriaAEliminar] = useState(null);
 
-<<<<<<< HEAD
-    
-=======
->>>>>>> Nicolas
+    // Cargar los datos desde la API al montar el componente
     useEffect(() => {
         const cargarCategorias = async () => {
             try {
-                const data = await categoriasService.getCategorias();
-                setCategorias(data || []);
+                const response = await fetch(API_URL);
+                if (!response.ok) throw new Error('Error al obtener categorías');
+                const data = await response.json();
+                // Normalizamos nombre_categoria (backend) -> nombreCategoria (frontend)
+                const normalizadas = (data || []).map((c) => ({
+                    ...c,
+                    nombreCategoria: c.nombreCategoria ?? c.nombre_categoria,
+                }));
+                setCategorias(normalizadas);
             } catch (error) {
                 console.error("Error al traer las categorías de la API:", error);
             }
@@ -52,6 +56,7 @@ function Categorias() {
 
     const handleEditar = (c) => {
         setMostrarAgregar(false);
+        // Soportamos id o id_categoria dependiendo de cómo lo devuelva tu API
         setCategoriaEditando(c.id || c.id_categoria);
         setFormData({ ...c });
     };
@@ -59,14 +64,24 @@ function Categorias() {
     const handleGuardarCambios = async () => {
         try {
             const idTarget = formData.id || formData.id_categoria;
-            const modificado = await categoriasService.actualizarCategoria(idTarget, formData);
+            // Traducimos al nombre real de columna esperado por el backend
+            const payload = {
+                nombre_categoria: formData.nombreCategoria,
+                descripcion: formData.descripcion,
+                estado: formData.estado,
+            };
+            const response = await fetch(`${API_URL}/${idTarget}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            if (!response.ok) throw new Error('Error al actualizar categoría');
+            const modificado = await response.json();
+            const modificadoNormalizado = { ...modificado, nombreCategoria: modificado.nombre_categoria };
 
-<<<<<<< HEAD
-            
-=======
->>>>>>> Nicolas
+            // Actualizamos el estado local mapeando bajo ambos formatos
             setCategorias(categorias.map((c) =>
-                (c.id || c.id_categoria) === idTarget ? modificado : c
+                (c.id || c.id_categoria) === idTarget ? modificadoNormalizado : c
             ));
 
             setCategoriaEditando(null);
@@ -78,19 +93,24 @@ function Categorias() {
 
     const handleAgregarNueva = async () => {
         try {
-<<<<<<< HEAD
-=======
-            
->>>>>>> Nicolas
-            const ultimoIdNum = categorias.length > 0
-                ? Math.max(...categorias.map(c => parseInt(String(c.id || c.id_categoria).replace('C-', '')) || 0))
-                : 0;
-            const nuevoId = `C-${String(ultimoIdNum + 1).padStart(3, '0')}`;
+            // El id_categoria es AUTO_INCREMENT en MySQL: la base de datos lo genera sola,
+            // no hace falta calcularlo ni enviarlo desde el frontend.
+            // Traducimos al nombre real de columna esperado por el backend
+            const payload = {
+                nombre_categoria: formData.nombreCategoria,
+                descripcion: formData.descripcion,
+                estado: formData.estado,
+            };
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            if (!response.ok) throw new Error('Error al crear categoría');
+            const guardado = await response.json();
+            const guardadoNormalizado = { ...guardado, nombreCategoria: guardado.nombre_categoria };
 
-            const payload = { ...formData, id: nuevoId };
-            const guardado = await categoriasService.crearCategoria(payload);
-
-            setCategorias([...categorias, guardado]);
+            setCategorias([...categorias, guardadoNormalizado]);
             setFormData(formVacio);
             setMostrarAgregar(false);
         } catch (error) {
@@ -106,8 +126,10 @@ function Categorias() {
     const confirmarEliminar = async () => {
         try {
             const idTarget = categoriaAEliminar.id || categoriaAEliminar.id_categoria;
-            await categoriasService.eliminarCategoria(idTarget);
+            const response = await fetch(`${API_URL}/${idTarget}`, { method: 'DELETE' });
+            if (!response.ok) throw new Error('Error al eliminar categoría');
 
+            // Remover del estado local
             setCategorias(categorias.filter((c) => (c.id || c.id_categoria) !== idTarget));
             setMostrarConfirmar(false);
             setCategoriaAEliminar(null);
@@ -154,7 +176,7 @@ function Categorias() {
         <>
             <Navbar />
 
-            {/* confirmación eliminar */}
+            {/* Modal confirmación eliminar */}
             {mostrarConfirmar && (
                 <div className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
                     style={{ backgroundColor: 'rgba(0,0,0,0.6)', zIndex: 9999 }}>
@@ -173,7 +195,7 @@ function Categorias() {
 
             <div className="container py-4">
 
-                {/* Encabezado*/}
+                {/* Encabezado con stats */}
                 <div className="row g-3 mb-4 align-items-center">
                     <div className="col-md-5">
                         <h4 className="fw-bold mb-0">Categorías</h4>

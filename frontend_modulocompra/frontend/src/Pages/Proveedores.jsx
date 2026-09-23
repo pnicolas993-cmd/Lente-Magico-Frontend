@@ -2,25 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import "../Styles/Style.css";
 import Navbar from '../Components/Navbar.jsx';
-import { proveedoresService } from '../api/proveedoresService.js';
 
-const formVacio = {
-    id_tipo_documento: '1',
-    nit: '',
-    razon_social: '',
-    contacto: '',
-    telefono: '',
-    correo: '',
-    estado: 'Activo',
-    tipo: 'Fabricante',
-};
-
-const TIPO_COLORES = {
-    Fabricante: { bg: '#eff6ff', color: '#1d4ed8', border: '#bfdbfe' },
-    Distribuidor: { bg: '#f5f3ff', color: '#6d28d9', border: '#ddd6fe' },
-    Mayorista: { bg: '#fff7ed', color: '#c2410c', border: '#fed7aa' },
-    Importador: { bg: '#f0fdf4', color: '#15803d', border: '#bbf7d0' },
-};
+const API_URL = "http://localhost:5000/api/proveedores";
 
 function ConsultarProveedores() {
     const navigate = useNavigate();
@@ -28,7 +11,18 @@ function ConsultarProveedores() {
     const [proveedores, setProveedores] = useState([]);
     const [proveedorEditando, setProveedorEditando] = useState(null);
     const [mostrarAgregar, setMostrarAgregar] = useState(false);
-    const [formNuevo, setFormNuevo] = useState(formVacio);
+
+    // El formulario vacío se inicializa directamente aquí
+    const [formNuevo, setFormNuevo] = useState({
+        id_tipo_documento: '1',
+        nit: '',
+        razon_social: '',
+        contacto: '',
+        telefono: '',
+        correo: '',
+        estado: 'Activo',
+        tipo: 'Fabricante',
+    });
 
     const [toast, setToast] = useState({ mostrar: false, mensaje: '', tipo: 'success' });
     const [mostrarConfirmar, setMostrarConfirmar] = useState(false);
@@ -37,7 +31,9 @@ function ConsultarProveedores() {
     useEffect(() => {
         const cargarProveedores = async () => {
             try {
-                const data = await proveedoresService.getProveedores();
+                const response = await fetch(API_URL);
+                if (!response.ok) throw new Error('Error al obtener proveedores');
+                const data = await response.json();
                 setProveedores(data || []);
             } catch (error) {
                 console.error("Error al traer proveedores:", error);
@@ -77,21 +73,17 @@ function ConsultarProveedores() {
         setProveedorAEliminar(p);
         setMostrarConfirmar(true);
     };
+
     const confirmarEliminar = async () => {
         try {
-            
             const idTarget = proveedorAEliminar.id_proveedor || proveedorAEliminar.id;
-
             if (!idTarget) {
                 lanzarToast("No se pudo encontrar un ID válido para este registro.", "danger");
                 return;
             }
 
-<<<<<<< HEAD
-=======
-            
->>>>>>> Nicolas
-            await proveedoresService.eliminarProveedor(String(idTarget));
+            const response = await fetch(`${API_URL}/${idTarget}`, { method: 'DELETE' });
+            if (!response.ok) throw new Error('Error al eliminar proveedor');
 
             setProveedores(proveedores.filter((p) =>
                 String(p.id_proveedor || p.id) !== String(idTarget)
@@ -115,24 +107,33 @@ function ConsultarProveedores() {
 
         try {
             if (proveedorEditando) {
-                const modificado = await proveedoresService.actualizarProveedor(String(proveedorEditando), formNuevo);
+                const response = await fetch(`${API_URL}/${proveedorEditando}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formNuevo)
+                });
+                if (!response.ok) throw new Error('Error al actualizar proveedor');
+                const modificado = await response.json();
+
                 setProveedores(proveedores.map((p) => String(p.id_proveedor || p.id) === String(proveedorEditando) ? modificado : p));
                 lanzarToast("Proveedor actualizado con éxito.", "success");
             } else {
-                const nuevoId = proveedores.length > 0 ? Math.max(...proveedores.map(p => Number(p.id_proveedor || p.id) || 0)) + 1 : 1;
+                // id_proveedor es AUTO_INCREMENT en MySQL: la base de datos lo genera sola,
+                // no hace falta calcularlo ni enviarlo desde el frontend.
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formNuevo)
+                });
+                if (!response.ok) throw new Error('Error al crear proveedor');
+                const guardado = await response.json();
 
-                const payload = {
-                    ...formNuevo,
-                    id_proveedor: nuevoId,
-                    id: nuevoId
-                };
-
-                const guardado = await proveedoresService.crearProveedor(payload);
                 setProveedores([...proveedores, guardado]);
                 lanzarToast("Proveedor registrado con éxito.", "success");
             }
 
-            setFormNuevo(formVacio);
+            // Limpieza manual al estado por defecto
+            setFormNuevo({ id_tipo_documento: '1', nit: '', razon_social: '', contacto: '', telefono: '', correo: '', estado: 'Activo', tipo: 'Fabricante' });
             setProveedorEditando(null);
             setMostrarAgregar(false);
         } catch (error) {
@@ -176,7 +177,10 @@ function ConsultarProveedores() {
                         className="btn btn-primary"
                         onClick={() => {
                             setMostrarAgregar(!mostrarAgregar);
-                            if (mostrarAgregar) { setFormNuevo(formVacio); setProveedorEditando(null); }
+                            if (mostrarAgregar) {
+                                setFormNuevo({ id_tipo_documento: '1', nit: '', razon_social: '', contacto: '', telefono: '', correo: '', estado: 'Activo', tipo: 'Fabricante' });
+                                setProveedorEditando(null);
+                            }
                         }}
                     >
                         {mostrarAgregar ? 'Ver Tabla' : 'Agregar Proveedor'}
@@ -256,7 +260,7 @@ function ConsultarProveedores() {
                                     </select>
                                 </div>
                                 <div className="col-12 mt-4 text-end">
-                                    <button type="button" className="btn btn-secondary me-2" onClick={() => { setMostrarAgregar(false); setFormNuevo(formVacio); setProveedorEditando(null); }}>Cancelar</button>
+                                    <button type="button" className="btn btn-secondary me-2" onClick={() => { setMostrarAgregar(false); setFormNuevo({ id_tipo_documento: '1', nit: '', razon_social: '', contacto: '', telefono: '', correo: '', estado: 'Activo', tipo: 'Fabricante' }); setProveedorEditando(null); }}>Cancelar</button>
                                     <button type="submit" className="btn btn-success">{proveedorEditando ? 'Guardar Cambios' : 'Registrar Proveedor'}</button>
                                 </div>
                             </div>
@@ -342,5 +346,13 @@ function ConsultarProveedores() {
         </div>
     );
 }
+
+// Movido al final para limpiar el espacio visual de arriba sin perder los estilos en la tabla
+const TIPO_COLORES = {
+    Fabricante: { bg: '#eff6ff', color: '#1d4ed8', border: '#bfdbfe' },
+    Distribuidor: { bg: '#f5f3ff', color: '#6d28d9', border: '#ddd6fe' },
+    Mayorista: { bg: '#fff7ed', color: '#c2410c', border: '#fed7aa' },
+    Importador: { bg: '#f0fdf4', color: '#15803d', border: '#bbf7d0' },
+};
 
 export default ConsultarProveedores;
