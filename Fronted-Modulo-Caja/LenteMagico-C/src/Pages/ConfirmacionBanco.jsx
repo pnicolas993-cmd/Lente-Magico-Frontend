@@ -1,5 +1,4 @@
 import React from "react";
-// Importamos el servicio unificado para registrar el pago
 import { ConfirmacionBancoService } from "../Api/ConfirmacionBancoService";
 
 function ConfirmacionBanco() {
@@ -11,21 +10,17 @@ function ConfirmacionBanco() {
 
   const verificarSms = async (e) => {
     e.preventDefault();
-    
-    // Captura garantizada usando el atributo name del input
     const tokenInput = e.target.tokenAutorizacion.value; 
 
-    // Estructuramos el objeto JSON unificado para el endpoint /pagos
     const datosCompra = {
       numero_factura: factura.numero,
-      cliente: "Confirmado por el Banco", // Marcamos el cliente o estado según tu requerimiento
+      cliente: "Confirmado por el Banco",
       total: factura.total,
-      numero_tarjeta: tokenInput, // Reutilizamos el campo para almacenar el Token / Comprobante
-      cuotas: "1" // Las transferencias bancarias se registran como pago único (1 cuota)
+      numero_tarjeta: tokenInput,
+      cuotas: "1"
     };
 
     try {
-      // Enviamos los datos mediante POST usando tu arquitectura con Axios
       await ConfirmacionBancoService.verificar(datosCompra);
 
       alert(
@@ -44,9 +39,8 @@ function ConfirmacionBanco() {
       const mensajeServidor = error.response?.data?.mensaje || error.message;
 
       alert(
-        `❌ Error al registrar la confirmación en la API (Código: ${codigoStatus})\n\n` +
-        `Detalle técnico: ${mensajeServidor}\n\n` +
-        `Asegúrate de que tu backend esté corriendo en el puerto 3000.`
+        `❌ Error al registrar la confirmación(Código: ${codigoStatus})\n\n` +
+        `Detalle técnico: ${mensajeServidor}\n\n`
       );
     }
   };
@@ -60,7 +54,7 @@ function ConfirmacionBanco() {
             <h3 className="fw-bold text-success mb-1">Validación Del Banco</h3>
           </div>
 
-          {/* Caja con la información de la transferencia pendiente */}
+          {/* Información de la transferencia pendiente */}
           <div className="p-3 bg-dark text-white rounded small mb-4 font-monospace">
             <div className="text-warning fw-bold mb-1">Transacción Pendiente:</div>
             <div>Ref: {factura.numero}</div>
@@ -73,7 +67,7 @@ function ConfirmacionBanco() {
               <label className="small fw-bold text-muted mb-1 d-block text-center">Ingresa el Token de Seguridad / Comprobante</label>
               <input 
                 type="text" 
-                name="tokenAutorizacion" // CORREGIDO: Se añade name para una lectura estricta y limpia
+                name="tokenAutorizacion"
                 placeholder="Código de Aprobación o Token" 
                 className="form-control py-2 text-center font-monospace" 
                 required 

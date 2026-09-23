@@ -2,7 +2,7 @@ import React from "react";
 
 import { RegistrarClienteService } from "../Api/RegistrarClienteService";
 
-export default function RegistrarCliente() {
+function RegistrarCliente() {
   
   const manejarRegistro = async (e) => {
     e.preventDefault();
@@ -96,3 +96,5 @@ export default function RegistrarCliente() {
     </div>
   );
 }
+
+export default RegistrarCliente;

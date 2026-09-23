@@ -38,7 +38,7 @@ function AgregarConsulta() {
             </div>
 
             <button type="submit" className="btn btn-success w-100 fw-bold py-2 shadow-sm">
-              Agendar Consulta
+              Agregar Consulta
             </button>
           </form>
         </div>

@@ -75,7 +75,7 @@ function RegistrarServicio() {
               />
             </div>
 
-            {/* Campo 3: Costo del Servicio */}
+            {/* Valor del Servicio */}
             <div className="mb-4">
               <input 
                 type="number" 
@@ -88,7 +88,6 @@ function RegistrarServicio() {
               />
             </div>
 
-            {/* Botón de acción con estilos estables */}
             <button type="submit" className="btn btn-warning text-dark w-100 fw-bold py-2 shadow-sm">
               Registrar Servicio
             </button>

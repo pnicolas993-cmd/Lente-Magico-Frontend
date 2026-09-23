@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { ConsultarClienteService } from "../Api/ConsultarClienteService";
-
 import { RegistrarClienteService } from "../Api/RegistrarClienteService"; 
 
 function ConsultarCliente() {
@@ -42,12 +41,11 @@ function ConsultarCliente() {
 
         } catch (errorRegistro) {
           console.error("Error al registrar cliente:", errorRegistro);
-          alert("❌ El cliente no existía, pero hubo un error al intentar guardarlo en la API.");
+          alert("❌ El cliente no existía, pero hubo un error al intentar guardarlo.");
         }
 
       } else {
         console.error("Error en la consulta:", error);
-        alert("❌ Error de conexión con la API al consultar el cliente.");
       }
     }
   };
