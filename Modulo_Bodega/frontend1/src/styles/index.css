@@ -55,10 +55,6 @@ body {
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -109,6 +105,7 @@ code {
   background: var(--code-bg);
 }
 
+
 .nav-optica {
     background-color: #1e40af; 
     display: flex;
@@ -118,12 +115,14 @@ code {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+
 .nav-logo-optica {
     color: #ffffff !important;
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
 }
+
 
 .nav-lista-optica {
     display: flex;
@@ -132,6 +131,7 @@ code {
     margin: 0;
     padding: 0;
 }
+
 
 .nav-enlace-optica {
     color: #ffffff;
@@ -142,6 +142,7 @@ code {
     transition: opacity 0.2s, transform 0.2s;
 }
 
+
 .nav-enlace-optica:hover {
     opacity: 1;
     text-decoration: underline;
@@ -150,6 +151,7 @@ code {
 .bg-azul-optica {
     background-color: #1e40af !important; 
 }
+
 
 .borde-total {
     border-left: 6px solid #1e40af !important; 
@@ -190,6 +192,7 @@ code {
   font-size: 15px;
   margin-bottom: 24px;
 }
+
 
 .busqueda-wrapper {
   display: flex;
@@ -244,6 +247,7 @@ code {
   cursor: pointer;
 }
 
+
 .tabla-responsiva {
   width: 100%;
   overflow-x: auto;
@@ -279,6 +283,7 @@ code {
   font-weight: 600;
 }
 
+
 .badge {
   padding: 4px 10px;
   border-radius: 20px;
@@ -297,6 +302,7 @@ code {
   color: #92400e;
 }
 
+
 .btn-tabla {
   padding: 6px 14px;
   border-radius: 6px;
@@ -312,4 +318,14 @@ code {
   background-color: #f1f5f9;
   border-color: #1e40af;
   color: #1e40af;
+}
+
+
+.tabla-inicio thead th {
+  background-color: #0d6efd !important;
+  color: #ffffff !important;
+}
+
+.tabla-inicio tbody tr:hover {
+  background-color: #eaf2ff !important;
 }

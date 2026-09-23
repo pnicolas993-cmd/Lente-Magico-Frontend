@@ -44,6 +44,7 @@ function Nav() {
                 </div>
             </nav>
 
+            
             {mostrarAlerta && (
                 <div className="modal-overlay">
                     <div className="modal-editar" style={{ maxWidth: '400px' }}>
